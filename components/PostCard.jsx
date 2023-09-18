@@ -39,7 +39,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 			</div>
 
 			<p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
-			<p className="font-inter text-sm blue_gradient " onClick={() => handleTagClick && handleTagClick(post.tag)}>
+			<p className="font-inter hover:font-bold transition text-sm blue_gradient cursor-pointer" onClick={() => handleTagClick && handleTagClick(post.tag)}>
 				#{post.tag}
 			</p>
 

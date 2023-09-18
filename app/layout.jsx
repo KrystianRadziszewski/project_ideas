@@ -4,8 +4,8 @@ import './globals.css';
 import Provider from '@/components/Provider';
 
 export const metadata = {
-	title: 'Promtopia',
-	description: ' Discover & Share AI Promts',
+	title: 'ShareIdea',
+	description: ' Discover & Share Your Ideas',
 };
 
 export default function RootLayout({ children }) {
