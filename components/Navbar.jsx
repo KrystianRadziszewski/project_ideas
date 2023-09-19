@@ -15,7 +15,7 @@ const Navbar = () => {
 		const fetchProviders = async () => {
 			const res = await getProviders();
 
-			console.log(res);
+			// console.log(res);
 
 			setProviders(res);
 		};
