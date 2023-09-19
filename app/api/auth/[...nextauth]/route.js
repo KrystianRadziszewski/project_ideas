@@ -19,7 +19,7 @@ const handler = NextAuth({
 
 			session.user.id = sessionUser._id.toString();
 
-			return session; // <- we know what user is logged
+			return session; // <-  know what user is logged
 		},
 
 		async signIn({ profile }) {
