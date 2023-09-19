@@ -8,19 +8,15 @@ const handler = NextAuth({
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID || '',
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-			allowDangerousEmailAccountLinking: true,
 		}),
 	],
 	callbacks: {
 		async session({ session }) {
-			console.log(session);
 			// store the user id from MongoDB to session
 			const sessionUser = await User.findOne({
 				email: session.user.email,
 			});
-
 			session.user.id = sessionUser._id.toString();
-
 			return session; // <-  know what user is logged
 		},
 

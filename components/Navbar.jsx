@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
 	const { data: session } = useSession();
@@ -14,8 +16,6 @@ const Navbar = () => {
 	useEffect(() => {
 		const fetchProviders = async () => {
 			const res = await getProviders();
-
-			// console.log(res);
 
 			setProviders(res);
 		};
@@ -41,7 +41,16 @@ const Navbar = () => {
 							Sing Out
 						</button>
 						<Link href={`/profile`}>
-							<Image src={session?.user.image} width={37} height={37} alt="Logo user" className=" rounded-full" />
+							<Image
+								data-tooltip-id="my-tooltip"
+								data-tooltip-content="Your profile"
+								src={session?.user.image}
+								width={37}
+								height={37}
+								alt="Logo user"
+								className="hover:scale-110 rounded-full transition"
+							/>
+							<Tooltip id="my-tooltip" />
 						</Link>
 					</div>
 				) : (
@@ -60,10 +69,11 @@ const Navbar = () => {
 			<div className="flex relative sm:hidden">
 				{session?.user ? (
 					<div className="flex">
-						<Image src={session?.user.image} alt="Logo" width={37} height={37} className=" rounded-full" onClick={() => setNavMobile((prev) => !prev)} />
+						<AiOutlineMenu className=" scale-150 cursor-pointer" onClick={() => setNavMobile((prev) => !prev)} />
 
 						{navMobile && (
 							<div className="dropdown">
+								<Image src={session?.user.image} alt="Logo" width={27} height={27} className=" rounded-full" />
 								<Link href={`/profile`} className="dropdown_link" onClick={() => setNavMobile(false)}>
 									My Profile
 								</Link>

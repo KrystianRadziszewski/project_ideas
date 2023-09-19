@@ -59,7 +59,7 @@ const Feed = () => {
 	return (
 		<section className="feed">
 			<form className="relative w-full flex_center">
-				<input type="text" value={searchText} placeholder="Search for tag or a username" required onChange={handleSearchChange} className="search_input peer" />
+				<input type="text" value={searchText} placeholder="Search posts for tag or a content..." required onChange={handleSearchChange} className="search_input peer" />
 			</form>
 
 			{searchText ? <PostCardList data={searchResults} handleTagClick={handleTagClick} /> : <PostCardList data={posts} handleTagClick={handleTagClick} />}
