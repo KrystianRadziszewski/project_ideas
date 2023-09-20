@@ -23,7 +23,7 @@ const UserProfile = ({ params }) => {
 		}
 	}, [params?.id]);
 
-	return <Profile name={userName} desc={`Welcome to ${userName} personalized profile page`} data={posts} handleEdit={handleEdit} handleDelete={handleDelete} />;
+	return <Profile name={userName} desc={`Welcome to ${userName} personalized profile page`} data={posts} />;
 };
 
 export default UserProfile;
