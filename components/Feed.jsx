@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react';
 import PostCard from './PostCard';
 
 const PostCardList = ({ data, handleTagClick }) => {
+	// const [data, setData] = useState([]);
+	// const [isLoading, setIsLoading] = useState(true);
+
+	// useEffect(() => {}, []);
+
 	return (
 		<div className="mt-16 prompt_layout">
 			{data.map((post) => (
@@ -20,6 +25,7 @@ const Feed = () => {
 	const [searchText, setSearchText] = useState('');
 	const [searchTimeout, setSearchTimeout] = useState(null);
 	const [searchResults, setSearchResults] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -27,6 +33,7 @@ const Feed = () => {
 			const data = await response.json();
 
 			setPosts(data);
+			setIsLoading(false);
 		};
 
 		fetchPosts();
@@ -62,7 +69,9 @@ const Feed = () => {
 				<input type="text" value={searchText} placeholder="Search posts for tag or a content..." required onChange={handleSearchChange} className="search_input peer" />
 			</form>
 
-			{searchText ? <PostCardList data={searchResults} handleTagClick={handleTagClick} /> : <PostCardList data={posts} handleTagClick={handleTagClick} />}
+			{isLoading ? <p className="mt-16 prompt_layout">Loading posts...</p> : <PostCardList data={searchText ? searchResults : posts} handleTagClick={handleTagClick} />}
+
+			{/* {searchText ? <PostCardList data={searchResults} handleTagClick={handleTagClick} /> : <PostCardList data={posts} handleTagClick={handleTagClick} />} */}
 		</section>
 	);
 };
