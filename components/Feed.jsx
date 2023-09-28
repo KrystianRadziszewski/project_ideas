@@ -4,11 +4,6 @@ import React, { useEffect, useState } from 'react';
 import PostCard from './PostCard';
 
 const PostCardList = ({ data, handleTagClick }) => {
-	// const [data, setData] = useState([]);
-	// const [isLoading, setIsLoading] = useState(true);
-
-	// useEffect(() => {}, []);
-
 	return (
 		<div className="mt-16 prompt_layout">
 			{data.map((post) => (
@@ -70,8 +65,6 @@ const Feed = () => {
 			</form>
 
 			{isLoading ? <p className="mt-16 prompt_layout">Loading posts...</p> : <PostCardList data={searchText ? searchResults : posts} handleTagClick={handleTagClick} />}
-
-			{/* {searchText ? <PostCardList data={searchResults} handleTagClick={handleTagClick} /> : <PostCardList data={posts} handleTagClick={handleTagClick} />} */}
 		</section>
 	);
 };
